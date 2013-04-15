@@ -1,0 +1,72 @@
+<html>
+<head>
+	<title>Test</title>
+</head>
+<body>
+Ver en Console Log
+<script type="text/javascript" src="Multievent.js"></script>
+
+<script type="text/javascript">
+
+	multi = Multievent(3);
+	
+	multi.ini('a');
+
+	setTimeout(function(){
+
+		
+		multi.set_data('a',{comida:'mala',bebida:'mucha'})
+
+		multi.set_callback('a',function(){
+
+			console.log('acaba de termina a');
+
+		});
+
+		multi.end('a');
+
+	},300);
+
+
+
+
+	multi.ini('b');
+
+	setTimeout(function(){
+
+		
+		multi.set_data('b',{comida:'mala',bebida:'mucha'})
+
+		multi.set_callback('b',function(){
+
+			console.log('acaba de termina b');
+
+		});
+		
+		multi.end('b');
+
+	},100);
+
+
+	multi.ini('c');
+
+	multi.set_callback('c',function(){
+
+		console.log('termino c sin retornar datos');
+
+	});
+
+	multi.end('c');
+
+
+	multi.finish(function(data){
+
+		console.log('Los eventos terminaron de correr:');
+		console.log('Resultados:');
+		console.log(data);
+
+	});
+
+</script>
+</body>
+</html>
